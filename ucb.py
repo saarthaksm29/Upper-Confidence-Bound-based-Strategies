@@ -1,5 +1,6 @@
 import random
 import math
+import matplotlib.pyplot as plt
 
 period=int(input("Enter the time period: "))
 alpha=int(input("Enter the value of alpha: "))
