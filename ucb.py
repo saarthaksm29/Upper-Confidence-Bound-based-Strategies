@@ -87,15 +87,21 @@ print(max_achievable)
 print("The mean sample of rewards is: ",X_bar)
 print("The bias term for each channel is: ",A_bias)
 
-for key,value in X_bar.items():
-    X_bar[key]=value/times_played[key]
+x=times_played.keys()
+y=times_played.values()
+z=B_index.values()
+xbar=X_bar.values()
+rward=reward_arms.values()
 
-max_key=max(B_index,key=B_index.get)
+#################### Plots of Various Terms Calculated against the set of channels assumed #####################
+plt.plot(x,y,'k--',label='Times Played')
+plt.plot(x,z,'b',label='B_Index')
+plt.plot(x,xbar,'r',label='Mean Sample of Rewards')
+plt.plot(x,rward,'c',label='Rewards Sum')
 
-################################REGRET_CALCULATION#############################
-max_achievable=0.8
-channel_rewards=[0.2,0.5,0.7,0.8,0.1]
-regret=[]
-for i in range(len(channel_rewards)):
-        regret.append(max_achievable-channel_rewards[i])
-print(regret)
+plt.xlabel('Keys')
+plt.ylabel('Values')
+plt.title('Channel Estimation')
+plt.legend()
+plt.grid(True)
+plt.show()
